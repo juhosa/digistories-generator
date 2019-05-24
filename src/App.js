@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import InputComponent from './Input'
+import OutputComponent from './Output'
+import { Grid, GridCell } from "@rmwc/grid";
+import "@material/layout-grid/dist/mdc.layout-grid.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {inputData: ''};
+  }
+
+  generateInApp = (args) => {
+    console.log('generate in App', args)
+    this.setState({inputData: args})
+  }
+
+  render () {
+    return (
+      <Grid>
+        <GridCell span={6}>
+          <InputComponent parentFunc={this.generateInApp} />
+        </GridCell>
+        <GridCell span={6}>
+          <OutputComponent data={this.state.inputData} />
+        </GridCell>
+      </Grid>
+    );
+  }
 }
 
 export default App;

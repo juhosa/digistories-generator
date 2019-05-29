@@ -4419,6 +4419,11 @@ diffie-hellman@^5.0.0:
     miller-rabin "^4.0.0"
     randombytes "^2.0.0"
 
+digistories-generator@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/digistories-generator/-/digistories-generator-1.0.0.tgz#6812991bfc77501e7b745c5f9769ce7b3c034df8"
+  integrity sha512-YuM902KHW46wiTq50S+M2jz8eweqQGq5k+NeYgSIgSz9pMm5N351vYzmQG3irCVPyRnajpJUzvR4wJlJcVhAwA==
+
 dir-glob@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/dir-glob/-/dir-glob-2.0.0.tgz#0b205d2b6aef98238ca286598a8204d29d0a0034"

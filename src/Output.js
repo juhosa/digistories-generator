@@ -6,7 +6,7 @@ import "@material/notched-outline/dist/mdc.notched-outline.css";
 import "@material/line-ripple/dist/mdc.line-ripple.css";
 import { Button } from "@rmwc/button";
 import "@material/button/dist/mdc.button.css";
-import generateStory from "./digistories-generator";
+import generateStory from "digistories-generator";
 
 class OutputComponent extends React.Component {
   constructor(props) {

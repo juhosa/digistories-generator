@@ -6,6 +6,7 @@ import "@material/notched-outline/dist/mdc.notched-outline.css";
 import "@material/line-ripple/dist/mdc.line-ripple.css";
 import { Button } from "@rmwc/button";
 import "@material/button/dist/mdc.button.css";
+import generateStory from "./digistories-generator";
 
 class OutputComponent extends React.Component {
   constructor(props) {
@@ -17,35 +18,11 @@ class OutputComponent extends React.Component {
     console.log(event.target.value);
   };
 
-  doStory = (story, index) => {
-    return `
-    {
-          id: ${index},
-          text: \`${story.teksti}\`,
-          picSrc: '@/../static/images/${story.kuva}'
-    }`;
-  };
-  doStories = () => {
-    return `${this.props.data.tekstitJaKuvat
-      .map((s, i) => this.doStory(s, i))
-      .join(",")}`;
-  };
-
-  generate = () => {
-    // return JSON.stringify(this.props.data);
-    if (this.props.data.tekstitJaKuvat === undefined) {
-      return ``;
-    }
-    return `export default  {
-        name: '${this.props.data.nimi}',
-        stories: [
-            ${this.doStories()}
-        ]
-    }`;
-  };
-
   downloadFile = () => {
-    let blobbi = new Blob([this.generate()], { type: "text/plain" });
+    let blobbi = new Blob(
+      [generateStory(this.props.data.nimi, this.props.data.tekstitJaKuvat)],
+      { type: "text/plain" }
+    );
     var downloadLink = document.createElement("a");
     downloadLink.download = `${this.props.data.nimi}.js`;
     downloadLink.innerHTML = "Download File";
@@ -69,7 +46,10 @@ class OutputComponent extends React.Component {
           outlined
           fullwidth
           rows={40}
-          value={this.generate()}
+          value={generateStory(
+            this.props.data.nimi,
+            this.props.data.tekstitJaKuvat
+          )}
           onChange={this.areaMuuttu}
         />
       </div>
